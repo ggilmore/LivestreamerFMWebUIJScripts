@@ -1,0 +1,17 @@
+[0m[[0minfo[0m] [0mFast optimizing /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/scala-2.11/livestreamerfmwebuijscripts-fastopt.js[0m
+[0m[[0mdebug[0m] [0mLinker: Read info: 4999 us[0m
+[0m[[0mdebug[0m] [0mLinker: Compute reachability: 59086 us[0m
+[0m[[0mdebug[0m] [0mLinker: Assemble LinkedClasses: 225413 us[0m
+[0m[[0mdebug[0m] [0mLinker: cache stats: reused: 3687 -- invalidated: 8 -- trees read: 5[0m
+[0m[[0mdebug[0m] [0mLinker: 291774 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Batch mode: false[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Incremental part: 4528 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizing 1 methods.[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: Optimizer part: 802 us[0m
+[0m[[0mdebug[0m] [0mInc. optimizer: 7373 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Compute reachability: 34441 us[0m
+[0m[[0mdebug[0m] [0mRefiner: Assemble LinkedClasses: 3026 us[0m
+[0m[[0mdebug[0m] [0mRefiner: 37593 us[0m
+[0m[[0mdebug[0m] [0mEmitter: Class tree cache stats: reused: 418 -- invalidated: 5[0m
+[0m[[0mdebug[0m] [0mEmitter: Method tree cache stats: resued: 1851 -- invalidated: 1[0m
+[0m[[0mdebug[0m] [0mEmitter (write output): 64526 us[0m

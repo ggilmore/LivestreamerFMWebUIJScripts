@@ -6,6 +6,7 @@ import org.scalajs.dom
 import dom.html
 import org.scalajs.dom.ext.Ajax
 import scala.scalajs.js
+import org.scalajs.jquery._
 import scala.scalajs.js.JSApp
 import scalajs.js.annotation.JSExport
 import scalatags.JsDom.all._
@@ -17,6 +18,13 @@ import scala.scalajs
   .runNow
 
 
+/**
+ *
+ * @param urlPath
+ * @param port
+ * @param uniqueID
+ * @param hasError
+ */
 case class StreamInformation(urlPath:String, port: Int, uniqueID:Long, hasError:Boolean)
 
 case class TableDifferences(changedError:Set[StreamInformation], newEntries:Set[StreamInformation])
@@ -33,18 +41,27 @@ case class TableInfo(entries: Set[StreamInformation]){
       thatMap.keySet.diff(thisMap.keySet).foldLeft(Set.empty[StreamInformation])((s,n) => s + thatMap(n))
 
     val changedError:Set[StreamInformation] = {
-      val newKeys:Set[Long] = newEntries.foldLeft(Set.empty[Long])((s,n) => s + n.uniqueID)
+      val newKeys:Set[Long] = newEntries.foldLeft(Set.empty[Long])((s,n) => s + n.uniqueID) //new processes that were added
+
+      //get rid of the new entries from "thatMap"
       val sameEntriesSet = thatMap.keySet.diff(newKeys).foldLeft(Set.empty[StreamInformation])((s,k) => s + thatMap(k))
+
+      //see which entries have different isError values
       sameEntriesSet.diff(thisMap.values.toSet)
     }
-    TableDifferences(changedError, newEntries)
+
+    //see the streams that were deleted (by the clear button) since the table was last rendered.
+    val removedEntries:Set[StreamInformation] = {
+      (thisMap.keySet diff thatMap.keySet).foldLeft(Set[StreamInformation]())((s, k) => s + thisMap(k))
+    }
+    TableDifferences(changedError union removedEntries, newEntries)
   }
 }
 
 @JSExport
 object main {
   @JSExport
-  def main(tableDivName:String ="streamTableLocation", tableName:String = "streamTable", streamTableJsonPath:String = "/urls") ={
+  def main(tableDivName:String ="streamTableLocation", tableBodyName:String = "streamTableBody", tableName:String = "streamTable", streamTableJsonPath:String = "/urls") ={
 
     /**
      * Should be called only once, initially adds the table (with id = to the tableName parameter) as a child of the
@@ -63,10 +80,11 @@ object main {
       streamURL.innerHTML = "STREAM URL"
       val portNumber = headerRow.insertCell(1)
       portNumber.innerHTML = "PORT #"
-
+      val tableBody = myTable.createTBody.asInstanceOf[html.TableSection]
+      tableBody.id = tableBodyName
 
       myTable.align = "center"
-      getJSONAndRunCallback(renderTable, myTable, div)
+      getJSONAndRunCallback(renderTable, tableBody, div)
       div.appendChild(myTable)
 
       println("table initialized")
@@ -101,14 +119,14 @@ object main {
     /**
      * Gets the process list JSON from the server and then runs the callback using the information contained in the JSON.
      * @param callback the function to run when the JSON is successfully acquired
-     * @param table the table that is manipulated using the callback
+     * @param tableBody the tableBody that is manipulated using the callback
      * @param div the div that is manipuated using the callback
      */
-    def getJSONAndRunCallback(callback: (js.Array[js.Dictionary[js.Dynamic]], html.Table) => Unit, table: html.Table, div:html.Div) ={
+    def getJSONAndRunCallback(callback: (js.Array[js.Dictionary[js.Dynamic]], html.TableSection) => Unit, tableBody: html.TableSection, div:html.Div) ={
       Ajax.get(streamTableJsonPath).onSuccess{case xhr=>{
         js.JSON.parse(xhr.responseText) match {
           case processList:js.Array[js.Dictionary[js.Dynamic]] =>{
-            callback(processList, table)
+            callback(processList, tableBody)
           }
           case _ => p("SOMEONE SCREWED UP BIG TIME!!!")
         }
@@ -122,9 +140,9 @@ object main {
      */
     def refreshTable = {
       println("refreshing table")
-      val myTable = dom.document.getElementById(tableName).asInstanceOf[html.Table]
+      val myTableBody = dom.document.getElementById(tableBodyName).asInstanceOf[html.TableSection]
       val div = dom.document.getElementById(tableDivName).asInstanceOf[html.Div]
-      getJSONAndRunCallback(renderTable, myTable, div)
+      getJSONAndRunCallback(renderTable, myTableBody, div)
     }
 
     /**
@@ -133,9 +151,9 @@ object main {
      *                    streams added (and that is reflected in the JSON), the table will have a new row containing
      *                    the information associated with the new stream. If a stream was removed, the corresponding row
      *                    will turn red and be be crossed out in the table.
-     * @param table The table that we are adding rows to or modifying some of the rows on
+     * @param tableBody The tableBody that we are adding rows to or modifying some of the rows on
      */
-    def renderTable(streamTable:js.Array[js.Dictionary[js.Dynamic]], table: html.Table) = {
+    def renderTable(streamTable:js.Array[js.Dictionary[js.Dynamic]], tableBody: html.TableSection) = {
 
       val differences:TableDifferences =
         buildTableInfoFromCurrentTable.diffOtherTableInfo(buildTableInfoFromJSON(streamTable))
@@ -148,7 +166,7 @@ object main {
       })
 
       differences.newEntries.foreach(info =>{
-        val row = table.insertRow(1).asInstanceOf[html.TableRow]
+        val row = tableBody.insertRow(0).asInstanceOf[html.TableRow]
         renderRow(info, row)
       })
 
@@ -171,8 +189,9 @@ object main {
       if (streamInformation.hasError) row.setAttribute("class", "invalid") else row.setAttribute("class", "valid")
       row.id = streamInformation.uniqueID.toString
     }
-    println("HELLO")
+
     initializeTable
     dom.setInterval(()=>refreshTable, 2000)
+
   }
 }

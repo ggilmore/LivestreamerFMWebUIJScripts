@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="default"
 		confs="default"
-		date="20150319122450"/>
+		date="20150328215941"/>
 	<dependencies>
 		<module organisation="com.lihaoyi" name="workbench">
 			<revision name="0.2.3" status="release" pubdate="20141108145234" resolver="sbt-chain" artresolver="sbt-chain" homepage="https://github.com/lihaoyi/workbench" extra-scalaVersion="2.10" extra-sbtVersion="0.13" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="66">

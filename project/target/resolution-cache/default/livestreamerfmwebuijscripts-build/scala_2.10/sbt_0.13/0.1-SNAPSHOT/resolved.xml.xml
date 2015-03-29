@@ -4,7 +4,7 @@
 		module="livestreamerfmwebuijscripts-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20150317114832"
+		publication="20150327180409"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>

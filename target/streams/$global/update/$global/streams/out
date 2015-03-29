@@ -7,7 +7,7 @@
 [0m[[0mdebug[0m] [0m== resolving dependencies for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 [compile][0m
 [0m[[0mdebug[0m] [0m== resolving dependencies default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0->org.scala-lang#scala-library;2.11.6 [compile->default(compile)][0m
 [0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.11.6 ...[0m
-[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@23621990[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@c4f1110[0m
 [0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.11.6[0m
 [0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.11.6 in sbt-chain[0m
 [0m[[0mdebug[0m] [0m	[2.11.6] org.scala-lang#scala-library;2.11.6[0m
@@ -774,7 +774,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty#jetty-http;8.1.16.v20140903!jetty-http.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty.orbit#javax.servlet;3.0.0.v201112011016!javax.servlet.jar(orbit)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.eclipse.jetty#jetty-continuation;8.1.16.v20140903!jetty-continuation.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 511ms :: artifacts dl 20ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 2350ms :: artifacts dl 41ms[0m
 [0m[[0mdebug[0m] [0m	report for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 compile produced in /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/resolution-cache/reports/default-livestreamerfmwebuijscripts_sjs0.6_2.11-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 runtime produced in /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/resolution-cache/reports/default-livestreamerfmwebuijscripts_sjs0.6_2.11-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 test produced in /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/resolution-cache/reports/default-livestreamerfmwebuijscripts_sjs0.6_2.11-test.xml[0m
@@ -789,5 +789,5 @@
 [0m[[0mdebug[0m] [0m	report for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 pom produced in /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/resolution-cache/reports/default-livestreamerfmwebuijscripts_sjs0.6_2.11-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 scala-tool produced in /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/resolution-cache/reports/default-livestreamerfmwebuijscripts_sjs0.6_2.11-scala-tool.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#livestreamerfmwebuijscripts_sjs0.6_2.11;1.0 phantom-js-jetty produced in /Users/gmgilmore/Dropbox/ScalaDev/LivestreamerFMWebUIJScripts/target/resolution-cache/reports/default-livestreamerfmwebuijscripts_sjs0.6_2.11-phantom-js-jetty.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (511ms resolve - 20ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (2350ms resolve - 41ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

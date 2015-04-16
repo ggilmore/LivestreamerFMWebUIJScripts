@@ -1,3 +1,3 @@
 # LivestreamerFMWebUIJScripts
-ScalaJS Javascripts for [LivestreamerFMWebUI](https://github.com/ggilmore/LivestreamerFMWebUI)
+ScalaJS javascript code for [LivestreamerFMWebUI](https://github.com/ggilmore/LivestreamerFMWebUI).
 
